@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+
+    <style>
+        .login-box {
+            border: 1px solid silver;
+            padding: 20px;
+            width: 50%;
+        }
+        .center-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+<div class="center-div login-box">
+    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <b style="color: red">{{ message }}</b>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+    <div>
+        <i class="fa fa-gift fa-2x"></i>
+        <h4><span class="g-font">Stock App</span>
+            <br/> <small>Login To Your Account</small>
+        </h4>
+    </div>
+    <form method="post" action="http://localhost:5000/login">
+        <div class="form-group">
+            <input class="form-control" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="">
+            <button class="btn btn-primary" type="submit" id="log">LOGIN</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
