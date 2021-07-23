@@ -42,5 +42,14 @@ def login():
         return render_template('login.html')
 
 
+@app.route('/logout')
+def log_out():
+    session.pop('user', None)
+    resp = redirect(url_for('login'))
+    resp.set_cookie('email', expires=0)
+    resp.set_cookie('password', expires=0)
+    return resp
+
+
 if __name__ == '__main__':
     app.run()
